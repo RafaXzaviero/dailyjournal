@@ -63,7 +63,7 @@ include "koneksi.php";
 </head>
     <body>
         <!--nav begin-->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top ">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top font-monospace ">
             <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="https://i.pinimg.com/originals/c9/69/1b/c9691b9fb1a7eb5459a45b2634c177b0.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
@@ -76,6 +76,9 @@ include "koneksi.php";
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-dark">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#description">Description</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#article">Article</a>
@@ -128,10 +131,27 @@ include "koneksi.php";
         </div>
         </section>
         <!--hero end-->
+<!-- Deskripsi singkat -->
+<Section id="description" class="text-center p-5 text-dark">
+    <div class="container">
+        <h1 class="fw-bold display-4 pb-3 font-monospace">Description</h1>
+        <div class="container">
+            <p>My Hero Academia (僕ぼくのヒーローアカデミア Boku no Hīrō Akademia?) is a manga series serialized by Shonen Jump and written by Kohei Horikoshi. The series has been adapted into an anime series and three movies, as well as spawning the prequel series Vigilantes and spinoffs: School Briefs and Team-Up Missions.
+            The story is set in the modern-day, except people with special powers called "Quirks" have become commonplace throughout the world. In a world of chaos and confusion, Pro Heroes have now risen as the new profession to fight off powerful super villains.
+            A young boy named Izuku Midoriya is Quirkless, meaning he has no powers, but he still dreams of becoming a great hero one day.
+
+            <bold>Story Arcs<bold>
+            People are not born equal, a realization that four-year-old Izuku Midoriya faced when bullied by his classmates who had unique special powers. Izuku was one of the rare cases where he was born with absolutely no unique powers. This did not stop Izuku from pursuing his dream, a dream of becoming a great hero like the legendary All Might. To become the great hero he hopelessly wants to become, he will now join the ranks of one of the highest rated "Hero Academies" in the country: U.A. High School. With the help of his idol All Might, will he be able to claim the ranks and become a true hero?    
+        </p>
+            
+        </div>
+
+    </div>
+</Section>
 <!-- article begin -->
 <section id="article" class="text-center p-5 bg-primary" >
 <div class="container">
-    <h1 class="fw-bold display-4 pb-3">article</h1>
+    <h1 class="fw-bold display-4 pb-3 font-monospace">Article</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
     <?php
     $sql = "SELECT * FROM article ORDER BY tanggal DESC";
@@ -162,80 +182,85 @@ include "koneksi.php";
 </div>
 </section>
 <!-- article end -->
-        <!--gallery begin-->
-        <section id="gallery" class="section-gallery text-dark text-center">
-            <div class="container">
-                <h1 class="fw-bold display-4 pb-3" id="gallery">gallery</h1>
-                <div id="carouselExample" class="carousel slide">
+<!--gallery begin-->
+<section id="gallery" class="text-center p-5">
+        <div class="container">
+            <h1 class="fw-bold display-4 pb-3 font-monospace">Gallery</h1>
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/G1.png" class="d-block w-100" alt="gallery1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/G2.jpg" class="d-block w-100" alt="gallery2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/G3.png" class="d-block w-100" alt="gallery3">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/G4.jpg" class="d-block w-100" alt="gallery4">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/G5.jpg" class="d-block w-100" alt="gallery5">
-                    </div>
+                    <?php
+                    $sql = "SELECT * FROM gallery ORDER BY tanggal DESC";
+                    $hasil = $conn->query($sql);
+
+                    $activeClass = "active";
+                    while ($row = $hasil->fetch_assoc()) {
+                        ?>
+                        <div class="carousel-item <?= $activeClass ?>">
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="img/<?= $row["gambar"] ?>" class="card-img-top" alt="Gallery Image" />
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                        $activeClass = "";
+                    }
+                    ?>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
+            </div>
+        </div>
+</section>
+<!--gallery end-->
+<!-- schedule begin -->
+    <section id="schedule" class="text-center p-5">
+        <h1 class="text-center fw-bold font-monospace">Schedule</h1>
+        <div class="row">
+            <!-- senin -->
+            <div class="col-md-3 mb-3">
+                <div class="card h-100" >
+                    <div class="card-header bg-danger text-white">
+                        Senin
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            Rekayasa Perangkat Lunak<br>09.30-12.00 | H.5.6
+                        </li>
+                        <li class="list-group-item">
+                            Sistem Operasi<br>12.30-15.00 | H.4.9
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </section>
-        <!--gallery end-->
-        <!-- schedule begin -->
-        <section id="schedule" class="text-center p-5">
-            <h2 class="text-center fw-bold">Schedule</h2>
-            <div class="row">
-                <!-- senin -->
-                <div class="col-md-3 mb-3">
-                    <div class="card h-100" >
-                        <div class="card-header bg-danger text-white">
-                            Senin
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                Rekayasa Perangkat Lunak<br>09.30-12.00 | H.5.6
-                            </li>
-                            <li class="list-group-item">
-                                Sistem Operasi<br>12.30-15.00 | H.4.9
-                            </li>
-                        </ul>
+            <!-- selasa -->
+            <div class="col-md-3 mb-3">
+                <div class="card h-100">
+                    <div class="card-header bg-danger text-white text-center">
+                        Selasa
                     </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            Sistem Informasi<br>09.30-12.00 | H.4.2
+                        </li>
+                        <li class="list-group-item">
+                            Basis Data<br>12.30-14.10 | D.3.M
+                        </li>
+                        <li class="list-group-item">
+                            Pendidikan Kewarganegaraan<br>18.30-20.10 | Aula E.3.1
+                        </li>
+                    </ul>
                 </div>
-                <!-- selasa -->
-                <div class="col-md-3 mb-3">
-                    <div class="card h-100">
-                        <div class="card-header bg-danger text-white text-center">
-                            Selasa
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                Sistem Informasi<br>09.30-12.00 | H.4.2
-                            </li>
-                            <li class="list-group-item">
-                                Basis Data<br>12.30-14.10 | D.3.M
-                            </li>
-                            <li class="list-group-item">
-                                Pendidikan Kewarganegaraan<br>18.30-20.10 | Aula E.3.1
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- rabu -->
+            </div>
+            <!-- rabu -->
                 <div class="col-md-3 mb-3">
                     <div class="card h-100">
                         <div class="card-header bg-danger text-white text-center">
@@ -347,9 +372,11 @@ checkbox.addEventListener("change", () => {
         section.classList.add("text-light");
 
     if (index === 0) section.classList.add("bg-dark");        // Hero section
-    if (index === 1) section.classList.add("bg-dark");        // Article section
-    if (index === 2) section.classList.add("bg-dark");        // Gallery section
-    if (index === 4) section.classList.add("bg-secondary");   // about me
+    if (index === 1) section.classList.add("bg-secondary");   // Description section
+    if (index === 2) section.classList.add("bg-dark");        // Article section
+    if (index === 3) section.classList.add("bg-secondary");   // Gallery section
+    if (index === 4) section.classList.add("bg-dark");   // schedule section
+    if (index === 5) section.classList.add("bg-secondary");   // about me
 });
 
 // Set dark mode for article cards specifically
@@ -362,17 +389,19 @@ checkbox.addEventListener("change", () => {
 
 // Reset light mode colors for each section
     sections.forEach((section, index) => {
-            section.classList.remove("bg-dark", "text-light");
+            section.classList.remove("bg-dark", "bg-secondary","text-light");
 
     if (index === 0) section.classList.add("bg-warning", "text-dark"); // Hero section
-    if (index === 1) section.classList.add("bg-primary", "text-dark");    // Article section
-    if (index === 2) section.classList.add("bg-light", "text-dark");   // Gallery section
-    if (index === 4) section.classList.add("bg-warning", "text-dark");  // about me
+    if (index === 1) section.classList.add("bg-light", "text-dark");    // Description section
+    if (index === 2) section.classList.add("bg-primary", "text-dark");   // Article section
+    if (index === 3) section.classList.add("bg-light", "text-dark");  // Gallery section
+    if (index === 4) section.classList.add("bg-light");   // schedule section
+    if (index === 5) section.classList.add("bg-warning", "text-dark");  // about me
 });
 
 // Reset light mode for article cards
     articleCards.forEach(card => {
-        card.classList.remove("bg-secondary", "text-light");
+        card.classList.remove("bg-secondary" , "text-light");
         card.classList.add("bg-light", "text-dark");
     });
 }

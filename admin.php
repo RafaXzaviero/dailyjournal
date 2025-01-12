@@ -63,7 +63,7 @@ if (!isset($_SESSION['username'])) {
 </head>
 <body>
     <!-- nav begin -->
-    <nav class="navbar navbar-expand-sm bg-primary sticky-top">
+    <nav class="navbar navbar-expand-sm bg-primary sticky-top font-monospace">
     <div class="container">
         <a class="navbar-brand" href="index.php">
             <img src="https://i.pinimg.com/originals/c9/69/1b/c9691b9fb1a7eb5459a45b2634c177b0.png" alt="Logo" width="30"
@@ -87,12 +87,17 @@ if (!isset($_SESSION['username'])) {
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="admin.php?page=article">Article</a>
-            </li> 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin.php?page=gallery">Gallery</a>
+            </li>
+
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-danger fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-warning fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <?= $_SESSION['username']?>
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="admin.php?page=profile">Profile <?=$_SESSION['username']?> </a></li>
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li> 
                 </ul>
             </li> 
@@ -127,7 +132,7 @@ if (!isset($_SESSION['username'])) {
         <a href="https://www.instagram.com/svrorafael_"
         ><i class="bi bi-instagram h2 p-2 text-dark"></i
         ></a>
-        <a href="https://twitter.com/svrafael_"
+        <a href="https://x.com/svrafael_"
         ><i class="bi bi-twitter-x h2 p-2 text-dark"></i
         ></a>
         <a href="https://wa.me/+6282138845125"

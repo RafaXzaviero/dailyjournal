@@ -108,6 +108,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   </button>
                 </div>
               </form>
+              <!-- Tombol Back to Home -->
+              <div class="text-center mt-3">
+                <a href="index.php" class="btn btn-danger rounded-3">
+                  <i class="bi bi-left-circle"></i> Back to Home
+                </a>
+              </div>
             </div>
           </div>
           <div class="text-center mt-3">
@@ -124,7 +130,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ></script>
   </body>
 </html>
-
 
 <?php
 //set variable username dan password dummy
